@@ -1,9 +1,6 @@
-// src/App.jsx
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
-// 1. EL COMPONENTE HOME REAL (Con todo el diseño visual que armamos)
+// Puedes meter esto directamente en tu archivo de páginas o en App.jsx reemplazando el Home anterior
 const Home = () => {
-  // Datos de prueba temporales. Luego vendrán de Firestore.
+  // Datos quemados (fijos) de prueba. Luego estos vendrán de Firestore.
   const proyectosPrueba = [
     { id: 1, titulo: "Freshbite", categoria: "UI/UX Design", img: "https://via.placeholder.com/300x200" },
     { id: 2, titulo: "Leaf & Co.", categoria: "Brand Identity", img: "https://via.placeholder.com/300x200" },
@@ -13,7 +10,7 @@ const Home = () => {
   return (
     <div className="portfolio-container">
       
-      {/* HERO SECTION (Presentación) */}
+      {/* 1. HERO SECTION */}
       <section className="hero-section">
         <div className="hero-content">
           <p className="hero-subtitle">Hello, I'm</p>
@@ -26,20 +23,17 @@ const Home = () => {
             <button className="btn btn-dark">View Work ↗</button>
             <button className="btn btn-light">About Me ↗</button>
           </div>
-          <div style={{ marginTop: '20px' }}>
-            {/* Enlace para panel de administración */}
-            <Link to="/admin" style={{ color: '#e59371', fontWeight: 'bold' }}>Ir al Panel de Administración</Link>
-          </div>
         </div>
         
         <div className="hero-image-container">
+          {/* probable foto */}
           <div className="hero-avatar-placeholder">
             <img src="https://via.placeholder.com/350x450" alt="Mariana" />
           </div>
         </div>
       </section>
 
-      {/* SELECTED WORKS (Galería Verde) */}
+      {/* 2. SELECTED WORKS  */}
       <section className="works-section">
         <div className="works-header">
           <h2>Selected Works ✨</h2>
@@ -72,30 +66,3 @@ const Home = () => {
     </div>
   );
 };
-
-// 2. EL COMPONENTE ADMIN (Temporal por ahora)
-const Admin = () => (
-  <div style={{ padding: '40px', backgroundColor: 'white', minHeight: '100vh' }}>
-    <h1>Panel de Administración</h1>
-    <p>futuro formulario para gestionar proyectos</p>
-    <br />
-    <Link to="/" style={{ color: '#0b2f2d', fontWeight: 'bold' }}>⬅ Volver al Portafolio</Link>
-  </div>
-);
-
-// 3. componente principal de la aplicación que maneja las rutas
-function App() {
-  return (
-    <Router>
-      <Routes>
-        {/* Ahora renderizará el Home con el diseño real */}
-        <Route path="/" element={<Home />} />
-        
-        {/* Ruta para el panel de administración */}
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
-    </Router>
-  );
-}
-
-export default App;
